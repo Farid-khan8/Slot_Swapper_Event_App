@@ -5,14 +5,9 @@
 [![Express](https://img.shields.io/badge/Framework-Express.js-000000?logo=express&logoColor=white)](https://expressjs.com/)
 [![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248?logo=mongodb&logoColor=white)](https://mongodb.com/)
 [![JWT](https://img.shields.io/badge/Auth-JWT-black?logo=jsonwebtokens)](https://jwt.io/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Active-success)](#)
 
 ---
-
-### 🔗 **Live Demo (optional)**
-
-> _(Add link here if you deploy the app — e.g., Vercel/Render/Netlify)_
 
 ---
 
@@ -110,77 +105,37 @@ npm start
 All protected endpoints require a Bearer token in the header:
 Authorization: Bearer <token>
 
-Endpoint
-Method
-Description
-Example Request
-Example Response
-/api/auth/signup
-POST
-Register a new user
-{ "name": "John", "email": "john@example.com", "password": "pass" }
-{ "message": "User created" }
-/api/auth/login
-POST
-Log in and get JWT
-{ "email": "john@example.com", "password": "pass" }
-{ "token": "<jwt>", "user": { "id": "...", "name": "John" } }
-/api/auth/me
-GET
-Get current user (protected)
-—
-{ "\_id": "...", "name": "John" }
-/api/events
-GET
-Get user’s events
-—
-[ { "title": "...", "status": "BUSY" } ]
-/api/events
-POST
-Create new event
-{ "title": "Meeting", "startTime": "...", "endTime": "..." }
-Created event object
-/api/events/:id
-PUT
-Update event status
-{ "status": "SWAPPABLE" }
-Updated event object
-/api/events/:id
-DELETE
-Delete event
-—
-{ "message": "Event deleted" }
-/api/swaps/swappable-slots
-GET
-Get others’ swappable slots
-—
-Array of slots
-/api/swaps/swap-request
-POST
-Request a swap
-{ "mySlotId": "...", "theirSlotId": "..." }
-Swap request object
-/api/swaps/swap-response/:requestId
-POST
-Respond to swap
-{ "accepted": true }
-{ "message": "Accepted" }
-/api/swaps/requests
-GET
-Get user’s swap requests
-—
-{ "incoming": [...], "outgoing": [...] }
+## 🧠 API Endpoints
+
+> All protected endpoints require a Bearer token in the header:  
+> `Authorization: Bearer <token>`
+
+| **Endpoint**                          | **Method** | **Description**              | **Example Request**                                                   | **Example Response**                                            |
+| ------------------------------------- | ---------- | ---------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `/api/auth/signup`                    | **POST**   | Register a new user          | `{ "name": "John", "email": "john@example.com", "password": "pass" }` | `{ "message": "User created" }`                                 |
+| `/api/auth/login`                     | **POST**   | Log in and get JWT           | `{ "email": "john@example.com", "password": "pass" }`                 | `{ "token": "<jwt>", "user": { "id": "...", "name": "John" } }` |
+| `/api/auth/me`                        | **GET**    | Get current user (protected) | —                                                                     | `{ "_id": "...", "name": "John" }`                              |
+| `/api/events`                         | **GET**    | Get user’s events            | —                                                                     | `[ { "title": "...", "status": "BUSY" } ]`                      |
+| `/api/events`                         | **POST**   | Create new event             | `{ "title": "Meeting", "startTime": "...", "endTime": "..." }`        | `Created event object`                                          |
+| `/api/events/:id`                     | **PUT**    | Update event status          | `{ "status": "SWAPPABLE" }`                                           | `Updated event object`                                          |
+| `/api/events/:id`                     | **DELETE** | Delete event                 | —                                                                     | `{ "message": "Event deleted" }`                                |
+| `/api/swaps/swappable-slots`          | **GET**    | Get others’ swappable slots  | —                                                                     | `Array of slots`                                                |
+| `/api/swaps/swap-request`             | **POST**   | Request a swap               | `{ "mySlotId": "...", "theirSlotId": "..." }`                         | `Swap request object`                                           |
+| `/api/swaps/swap-response/:requestId` | **POST**   | Respond to swap              | `{ "accepted": true }`                                                | `{ "message": "Accepted" }`                                     |
+| `/api/swaps/requests`                 | **GET**    | Get user’s swap requests     | —                                                                     | `{ "incoming": [...], "outgoing": [...] }`                      |
 
 🧗 Challenges Faced
-• Port Conflicts: macOS AirPlay using port 5000 — fixed by updating proxy and port.
-• MongoDB Queries: Required precise use of populate and match for swap requests.
-• Frontend-Backend Sync: Ensured state updates without full reloads.
-• React Upgrades: Adjusted syntax for React 18 & Router 6 (createRoot, Routes).
-• Error Debugging: Solved proxy mismatch issues causing 403 errors.
-• UI Simplicity: List views chosen over full calendars for lightweight UX.
+
+-   • Port Conflicts: macOS AirPlay using port 5000 — fixed by updating proxy and port.
+-   • MongoDB Queries: Required precise use of populate and match for swap requests.
+-   • Frontend-Backend Sync: Ensured state updates without full reloads.
+-   • React Upgrades: Adjusted syntax for React 18 & Router 6 (createRoot, Routes).
+-   • Error Debugging: Solved proxy mismatch issues causing 403 errors.
+-   • UI Simplicity: List views chosen over full calendars for lightweight UX.
 
 🧑‍💻 Usage
-• Sign Up / Login: Create an account to access features.
-• Manage Calendar: Add and mark events as swappable.
-• Browse Marketplace: View and request swaps from others.
-• Notifications: Accept or reject incoming swap requests.
+
+-   • Sign Up / Login: Create an account to access features.
+-   • Manage Calendar: Add and mark events as swappable.
+-   • Browse Marketplace: View and request swaps from others.
+-   • Notifications: Accept or reject incoming swap requests.
